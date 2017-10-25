@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import TextInput from '../common/TextInput';
+
 import { FormControl } from 'material-ui/Form';
 import Input, { InputLabel } from 'material-ui/Input';
 import Button from 'material-ui/Button';
@@ -22,13 +24,12 @@ class CommentBar extends Component {
     render () {
         return (
             <div>
-                <FormControl margin="dense">
-                    <Input 
-                        id="cmmt" 
-                        placeholder="Write something User1234"
-                        value={this.state.comment} 
-                        onChange={this.onChange} />
-                </FormControl>
+                <TextInput 
+                    name="cmmt"
+                    placeholder="Write something User1234"
+                    value={this.state.comment}
+                    onChange={this.onChange}
+                />
                 <Button onClick={this.onSave}>Add</Button>
             </div>
         );
