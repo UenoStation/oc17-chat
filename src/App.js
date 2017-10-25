@@ -1,18 +1,35 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import CommentBar from './components/CommentBar';
+import CommentList from './components/CommentList';
+
+import AppBar from 'material-ui/AppBar';
+import Toolbar from 'material-ui/Toolbar';
+import Typography from 'material-ui/Typography';
+
 
 class App extends Component {
   render() {
+    const container = {
+      display: 'flex',
+      flexDirection: 'column',
+      width: '100vw'
+    } 
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div style={container}>
+        <AppBar position="static" color="default">
+          <Toolbar>
+            <Typography type="title" color="inherit">
+              User1234<br /><span>October 24th, 2017</span>
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <CommentList />
+        <CommentBar />
+        <footer>
+          <h5>this is the footer</h5>
+        </footer>
       </div>
     );
   }
