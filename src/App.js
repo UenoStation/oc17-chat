@@ -13,6 +13,7 @@ import Typography from 'material-ui/Typography';
 class App extends Component {
 
   state = {
+    user: 'User_Admin',
     comments: [
       { 
         user: 'User1234',
@@ -29,6 +30,17 @@ class App extends Component {
     ]
   }
 
+  onSubmitComment = (comment) => {
+    const entry = {
+      user: this.state.user,
+      message: comment
+    };
+    
+    let newComments = this.state.comments.slice();
+    newComments.push(entry);
+
+    this.setState({comments: newComments});
+  }
 
   render() {
     const container = {
@@ -42,12 +54,12 @@ class App extends Component {
         <AppBar position="static" color="default">
           <Toolbar>
             <Typography type="title" color="inherit">
-              User1234<br /><span>October 24th, 2017</span>
+              {this.state.user}<br /><span>October 24th, 2017</span>
             </Typography>
           </Toolbar>
         </AppBar>
         <CommentList comments={this.state.comments} />
-        <CommentBar />
+        <CommentBar user={this.state.user} submitHandler={this.onSubmitComment} />
         <footer style={appstyles.footer}>
           <h5>this is the footer</h5>
         </footer>
